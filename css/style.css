@@ -1,19 +1,157 @@
-/*
-Search css created by Alex
-(ｏ・_・)ノ”(ノ_<、)
-https://codepen.io/AlexKP/
-*/
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:100,200,300,400,600,700,900');
 
+/* Variable */
 :root {
     --cardColor: #6EB6FF;
-  }
+}
+
+/* Background */
+html {
+    height: 100%;
+}
 
 body {
-    background: #F4F7F7;
+    background: linear-gradient(0deg, #383d95, #040d30 90%) no-repeat #383d95;
+    min-height: 100%;
     margin: 0;
 }
 
+#layers {
+    height: 200px;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 100vw;
+}
+
+#layers .layer {
+    background-size: auto 100%;
+    background-position: 50% 0;
+    background-repeat: repeat-x;
+    height: 200px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transform: translate3d(0, 0, 0);
+    width: 200vw;
+}
+
+@keyframes twinkle {
+    from {
+        opacity: .3;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes layer-1 {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+
+    to {
+        transform: translate3d(-689px, 0, 0);
+    }
+}
+
+#layers .layer:nth-child(1) {
+    animation: twinkle 10s ease-in -5s infinite alternate, layer-1 344s linear infinite;
+    background-image: url('../assets/stars_1.png');
+}
+
+@keyframes layer-2 {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+
+    to {
+        transform: translate3d(-699px, 0, 0);
+    }
+}
+
+#layers .layer:nth-child(2) {
+    animation: twinkle 3s ease-in -3s infinite alternate, layer-2 349s linear infinite;
+    background-image: url('../assets/stars_2.png');
+}
+
+@keyframes layer-3 {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+
+    to {
+        transform: translate3d(-699px, 0, 0);
+    }
+}
+
+#layers .layer:nth-child(3) {
+    animation: twinkle 3.5s ease-in infinite alternate, layer-3 349s linear infinite;
+    background-image: url('../assets/stars_3.png');
+}
+
+@keyframes layer-4 {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+
+    to {
+        transform: translate3d(-480px, 0, 0);
+    }
+}
+
+#layers .layer:nth-child(4) {
+    animation: twinkle 4s ease-in -2s infinite alternate, layer-4 240s linear infinite;
+    background-image: url('../assets/stars_4.png');
+}
+
+@keyframes layer-5 {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+
+    to {
+        transform: translate3d(-486px, 0, 0);
+    }
+}
+
+#layers .layer:nth-child(5) {
+    animation: twinkle 5.5s ease-in infinite alternate, layer-5 243s linear infinite;
+    background-image: url('../assets/stars_5.png');
+}
+
+@keyframes shooting-star {
+    0% {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+
+    25% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate3d(-270px, 180px, 0);
+    }
+}
+
+#layers:before {
+    animation: 500ms linear 3s shooting-star;
+    background-image: url('../assets/Shooting_Star.png');
+    background-size: 72px 50px;
+    content: ' ';
+    height: 50px;
+    left: 80%;
+    position: absolute;
+    top: -50px;
+    width: 72px;
+    z-index: 100;
+}
+
+/* Input */
 .container {
     display: flex;
     flex-direction: row;
@@ -63,6 +201,7 @@ input:focus::-webkit-input-placeholder {
     transition: all 0.5s ease;
     animation: bounce 1s ease-in-out forwards, wrap 0.4s 1s ease-in-out forwards;
 }
+
 #input {
     animation: visible 1.3s 1s ease-in-out forwards;
 }
