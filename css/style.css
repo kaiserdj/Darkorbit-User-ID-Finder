@@ -8,6 +8,7 @@
 /* Background */
 html {
     height: 100%;
+    box-sizing: border-box;
 }
 
 body {
@@ -16,13 +17,34 @@ body {
     margin: 0;
 }
 
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+*:focus {
+    outline: none;
+    border: none;
+}
+
+ul,
+li {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+}
+
 #layers {
     height: 200px;
     left: 0;
     overflow: hidden;
     position: absolute;
     top: 0;
-    width: 100vw;
+    width: 100%;
 }
 
 #layers .layer {
@@ -169,8 +191,7 @@ body {
     outline: none;
     width: 100%;
     height: 100%;
-    font-size: 1.75em;
-    letter-spacing: 2px;
+    font-size: 2vw;
     text-align: center;
     transition: all 1s ease;
 }
@@ -194,12 +215,24 @@ input:focus::-webkit-input-placeholder {
     padding: 8px;
     width: 36px;
     border-radius: 50%;
+    /*margin-top: 200px;*/
 }
-
 
 #card {
     transition: all 0.5s ease;
     animation: bounce 1s ease-in-out forwards, wrap 0.4s 1s ease-in-out forwards;
+}
+
+#server {
+    background: var(--cardColor);
+    box-shadow: 0 15px 25px -10px rgba(0, 0, 0, 0.4);
+    border: none;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-size: 2vw;
+    outline: none;
+    opacity: 0;
+    animation: visible 1.3s 1s ease-in-out forwards;
 }
 
 #input {
@@ -245,4 +278,129 @@ input:focus::-webkit-input-placeholder {
     to {
         opacity: 1;
     }
+}
+
+/* Form */
+.t--label {
+    font: normal normal 500 14px/2 "Roboto", sans-serif;
+    color: #777;
+}
+
+.t--input {
+    font: normal normal 500 18px/1 "Roboto", sans-serif;
+    color: #000;
+}
+
+::-webkit-input-placeholder {
+    color: #000;
+}
+
+::-moz-placeholder {
+    color: #000;
+}
+
+:-ms-input-placeholder {
+    color: #000;
+}
+
+.the-form .form__item {
+    padding: 5px 10px;
+    transition: background-color 0.25s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.the-form .form__label {
+    display: block;
+}
+
+.the-form {
+    display: none;
+    border: 1px solid #ccc;
+    background: var(--cardColor);
+    margin: 50px;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.the-form .form__input {
+    display: block;
+    width: 100%;
+    height: 32px;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    text-indent: 0;
+    text-align: center;
+    background-color: transparent;
+}
+
+.the-form textarea.form__input {
+    margin-top: 5px;
+    height: auto;
+    resize: vertical;
+}
+
+.the-form .form__item {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+}
+
+.the-form .grid__segment:last-of-type .form__item {
+    border-bottom: 0;
+}
+
+@media only screen and (min-width: 600px) {
+
+    .the-form .grid__segment:nth-of-type(1) .form__item,
+    .the-form .grid__segment:nth-of-type(2) .form__item,
+    .the-form .grid__segment:nth-of-type(5) .form__item {
+        border-right: 1px solid #ccc;
+    }
+}
+
+.grid {
+    display: block;
+    font-size: 0;
+}
+
+.grid .grid__segment {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.grid .grid__segment.w--33,
+.grid .grid__segment.w--50,
+.grid .grid__segment.w--100 {
+    width: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+
+    .grid .grid__segment.w--33,
+    .grid .grid__segment.w--33.w--100 {
+        width: 33.3333333333%;
+    }
+}
+
+.form__item.is--focused {
+    background-color: #eee;
+}
+
+.form__item.is--valid {
+    box-shadow: inset 0 0 0 1px #00cc22;
+    background-color: rgba(0, 204, 34, 0.125);
+}
+
+.form__item.is--valid .form__label,
+.form__item.is--valid .form__input {
+    color: #00cc22;
+}
+
+.form__item.is--invalid {
+    box-shadow: inset 0 0 0 1px #ff0055;
+    background-color: rgba(255, 0, 85, 0.125);
+}
+
+.form__item.is--invalid .form__label,
+.form__item.is--invalid .form__input {
+    color: #ff0055;
 }
