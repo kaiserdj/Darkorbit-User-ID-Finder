@@ -15,6 +15,7 @@ $(document).keypress(function (event) {
 });
 
 function get_id(username) {
+    det_click = false;
     console.log("------loading------");
     let cors = "https://cors-anywhere.herokuapp.com/";
     let server = $("#server").val();;
