@@ -1,4 +1,6 @@
+let user = "";
 let det_click = false;
+
 $(document).click(function (event) {
     if (event.target.id === "input") {
         det_click = true;
@@ -15,6 +17,9 @@ $(document).keypress(function (event) {
 });
 
 function get_id(username) {
+    if(username === user || username === ""){
+        return;
+    }
     det_click = false;
     console.log("------loading------");
     let cors = "https://cors-anywhere.herokuapp.com/";
@@ -71,7 +76,6 @@ function get_id(username) {
         }
     }).fail(function(data) {
         error(data);
-        
       });
 }
 
