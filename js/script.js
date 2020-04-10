@@ -46,7 +46,7 @@ $(document).keypress(function(event) {
     if (event.key === "Enter" && event.target.id === "input" && event.target.value !== "") {
         console.log("cargando");
         let cors = "https://cors-anywhere.herokuapp.com/";
-        let server = "es1";
+        let server = $("#server").val();;
         let darkorbit = `https://${server}.darkorbit.com/ajax/pilotprofil.php`;
 
         let username = event.target.value;
