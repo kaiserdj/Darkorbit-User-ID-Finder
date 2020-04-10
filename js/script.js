@@ -17,7 +17,7 @@ $(document).keypress(function (event) {
 });
 
 function get_id(username) {
-    if(username === user || username === ""){
+    if (username === user || username === "") {
         return;
     }
     det_click = false;
@@ -74,9 +74,9 @@ function get_id(username) {
             $("#64").val("");
             $("#10").val("");
         }
-    }).fail(function(data) {
+    }).fail(function (data) {
         error(data);
-      });
+    });
 }
 
 function error(data) {
