@@ -3,7 +3,7 @@ $(document).click(function (event) {
     if (event.target.id === "input") {
         det_click = true;
     } else if (event.target.id !== "input" && det_click === true) {
-        get_id(event.target.value);
+        get_id($("#input").val());
         det_click = false;
     }
 });
