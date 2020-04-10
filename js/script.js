@@ -1,5 +1,3 @@
-/* https://dostats.info/ */
-
 let det_click = false;
 $(document).click(function (event) {
     if (event.target.id === "input") {
