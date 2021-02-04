@@ -22,22 +22,24 @@ function get_id(username) {
     }
     det_click = false;
     console.log("------loading------");
-    let cors = "https://cors-anywhere.herokuapp.com/";
+    let cors = "https://test.cors.workers.dev/?";
     let server = $("#server").val();;
     let darkorbit = `https://${server}.darkorbit.com/ajax/pilotprofil.php`;
 
-    let settings = {
-        "url": `${cors}${darkorbit}`,
-        "type": "POST",
-        "header": '{"X-Requested-With": "XMLHttpRequest"}',
-        "dataType": "json",
-        "data": {
-            "command": "searchProfileFromExternalPPP",
-            "profileUsername": username
-        }
-    };
+    var formdata = new FormData();
+    formdata.append("command", "searchProfileFromExternalPPP");
+    formdata.append("profileUsername", username);
+    formdata.append("language", "es");
 
-    $.ajax(settings).done(function (json) {
+    var requestOptions = {
+        method: 'POST',
+        body: formdata
+    };
+    
+  fetch(`${cors}${darkorbit}`, requestOptions)
+  .then(response => response.text())
+  .then(json => {
+        json = JSON.parse(json);
         if ($(".the-form").css("display") === "none") {
             $(".container").animate({
                 height: "10%",
@@ -74,9 +76,7 @@ function get_id(username) {
             $("#64").val("");
             $("#10").val("");
         }
-    }).fail(function (data) {
-        error(data);
-    });
+    }).catch(err => error(err));
 }
 
 function error(data) {
