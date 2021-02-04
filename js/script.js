@@ -22,7 +22,7 @@ function get_id(username) {
     }
     det_click = false;
     console.log("------loading------");
-    let cors = "https://test.cors.workers.dev/?";
+    let cors = "https://co.kaiserdj-c.workers.dev/?";
     let server = $("#server").val();;
     let darkorbit = `https://${server}.darkorbit.com/ajax/pilotprofil.php`;
 
