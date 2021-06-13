@@ -52,28 +52,28 @@ function get_id(username) {
         $("#json").val(JSON.stringify(json));
 
         if (json.url !== false) {
-            iduser64 = json.url.split("/")[4].split("-")[0];
+            iduser62 = json.url.split("/")[4].split("-")[0];
 
             let digits = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
             let iduser10 = 0;
-            for (let i = 0; i < iduser64.length; i++) {
-                let p = digits.indexOf(iduser64[i]);
+            for (let i = 0; i < iduser62.length; i++) {
+                let p = digits.indexOf(iduser62[i]);
                 if (p < 0) {
-                    iduser64 = NaN;
+                    iduser62 = NaN;
                 } else {
-                    iduser10 += p * Math.pow(digits.length, iduser64.length - i - 1);
+                    iduser10 += p * Math.pow(digits.length, iduser62.length - i - 1);
                 }
             }
             console.log(`User: ${username}`);
             $("#user").val(username);
-            console.log(`Iduser-64: ${iduser64}`);
-            $("#64").val(iduser64);
+            console.log(`Iduser-62: ${iduser62}`);
+            $("#62").val(iduser62);
             console.log(`Iduser-10: ${iduser10}`);
             $("#10").val(iduser10);
         } else {
             console.log(`User: ${json.status}`);
             $("#user").val(json.status);
-            $("#64").val("");
+            $("#62").val("");
             $("#10").val("");
         }
     }).catch(err => error(err));
